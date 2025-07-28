@@ -16,13 +16,31 @@
     <!-- Header & Navigation -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-primary">
+            <a href="#" class="text-2xl font-bold text-primary flex items-center gap-2">
                 <i class="fas fa-leaf mr-2"></i>Olive Education
             </a>
             <ul class="hidden md:flex items-center space-x-8">
                 <li><a href="#home" class="text-gray-600 hover:text-primary">Home</a></li>
-                <li><a href="#about" class="text-gray-600 hover:text-primary">About</a></li>
-                <li><a href="#programs" class="text-gray-600 hover:text-primary">Programs</a></li>
+                <li class="relative dropdown">
+                    <button class="dropdown-toggle text-gray-600 hover:text-primary flex items-center" aria-expanded="false">
+                        About <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-200"></i>
+                    </button>
+                    <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 hidden">
+                        <li><button class="about-tab block w-full text-left px-4 py-2 text-gray-600 hover:text-primary hover:bg-gray-100" data-tab="story">Our Story</button></li>
+                        <li><button class="about-tab block w-full text-left px-4 py-2 text-gray-600 hover:text-primary hover:bg-gray-100" data-tab="mission">Our Mission</button></li>
+                        <li><button class="about-tab block w-full text-left px-4 py-2 text-gray-600 hover:text-primary hover:bg-gray-100" data-tab="vision">Our Vision</button></li>
+                        <li><button class="about-tab block w-full text-left px-4 py-2 text-gray-600 hover:text-primary hover:bg-gray-100" data-tab="who-we-are">Who We Are</button></li>
+                    </ul>
+                </li>
+                <li class="relative dropdown">
+                    <button class="dropdown-toggle text-gray-600 hover:text-primary flex items-center" aria-expanded="false">
+                        Programs <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-200"></i>
+                    </button>
+                    <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 hidden">
+                        <li><a href="#oedc-content" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-gray-100">OEDC Thailand</a></li>
+                        <li><a href="#occ-content" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-gray-100">OCC Myanmar</a></li>
+                    </ul>
+                </li>
                 <li><a href="#gallery" class="text-gray-600 hover:text-primary">Gallery</a></li>
                 <li><a href="#contact" class="text-gray-600 hover:text-primary">Contact</a></li>
             </ul>
@@ -35,7 +53,13 @@
             <ul class="px-6 pb-4 space-y-4">
                 <li><a href="#home" class="block text-gray-600 hover:text-primary">Home</a></li>
                 <li><a href="#about" class="block text-gray-600 hover:text-primary">About</a></li>
-                <li><a href="#programs" class="block text-gray-600 hover:text-primary">Programs</a></li>
+                <li class="pt-2 pb-2">
+                    <span class="block text-gray-600 font-medium mb-2">Programs:</span>
+                    <ul class="pl-4 space-y-2">
+                        <li><a href="#oedc-content" class="block text-gray-600 hover:text-primary">- OEDC Thailand</a></li>
+                        <li><a href="#occ-content" class="block text-gray-600 hover:text-primary">- OCC Myanmar</a></li>
+                    </ul>
+                </li>
                 <li><a href="#gallery" class="block text-gray-600 hover:text-primary">Gallery</a></li>
                 <li><a href="#contact" class="block text-gray-600 hover:text-primary">Contact</a></li>
                 <li><a href="#donate" class="block btn-primary px-6 py-2 rounded-full font-semibold text-center">Donate</a></li>
@@ -45,42 +69,101 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center text-white">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1600x900/?community,education,hope');"></div>
-        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1600x900/?community,education,hope,ngo,volunteer');"></div>
+        <div class="absolute inset-0 bg-black opacity-60"></div>
         <div class="relative z-10 text-center px-4">
-            <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">Empowering Futures, One Student at a Time</h1>
-            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Providing vital education and skills to migrant and displaced communities on the Thai-Myanmar border.</p>
-            <a href="#about" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full transition duration-300">Learn More</a>
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight drop-shadow-lg" style="font-family: 'Nunito', 'Poppins', 'Segoe UI', Arial, sans-serif;">Education for Every Child, Every Future</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Olive Education is dedicated to empowering migrant and displaced youth on the Thai-Myanmar border with quality learning, digital skills, and hope for a brighter tomorrow.</p>
+            <a href="#about" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-cta-color">Learn More</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="section-title">Our Mission</h2>
-            <p class="section-subtitle">We are dedicated to providing accessible, inclusive, and high-quality education to empower individuals, strengthen communities, and build a brighter future for all.</p>
-            <div class="flex flex-wrap items-center -mx-4">
-                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-                    <img src="https://source.unsplash.com/800x600/?teacher,students,classroom" alt="Our Mission" class="rounded-lg shadow-xl">
+            <div class="w-full mb-12 flex flex-col items-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-2 tracking-tight">About Us</h2>
+                <div class="w-16 h-1 bg-primary rounded-full mb-8"></div>
+                
+                <div id="story" class="about-content w-full max-w-6xl bg-white rounded-lg shadow-lg p-8 mb-8 scroll-mt-24 fade-in active">
+                    <h3 class="text-2xl font-semibold text-primary mb-6 flex items-center"><i class="fas fa-book-open mr-3"></i>Our Story</h3>
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <p class="text-gray-700 text-lg mb-6">Since our establishment, Olive Education has been dedicated to transforming lives through education on the Thai-Myanmar border. We began as a small community initiative and have grown into a vibrant educational center, serving thousands of migrant and displaced youth.</p>
+                            <p class="text-gray-700 text-lg">Our journey reflects the resilience of our community and our commitment to creating lasting positive change through education, digital literacy, and vocational training.</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <img src="OEDC.jpg" alt="Olive Logo" class="w-32 h-32 object-contain mb-4 rounded-full border-4 border-primary">
+                            <h4 class="text-xl font-semibold text-primary mb-2">Olive Community</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="w-full md:w-1/2 px-4">
-                    <h3 class="text-2xl font-semibold mb-4">Who We Are</h3>
-                    <p class="mb-4">Olive Educational Development Center (OEDC) and Olive Community College (OCC) are committed to breaking down barriers to education. We provide digital literacy, vocational training, and academic programs for migrant workers, refugees, and displaced youth in Mae Sot and surrounding border areas.</p>
-                    <div class="flex space-x-8 mt-6">
-                        <div class="text-center">
-                            <i class="fas fa-users text-4xl text-primary mb-2"></i>
-                            <p class="font-bold text-2xl">5,000+</p>
-                            <p>Students Reached</p>
+
+                <div id="mission" class="about-content w-full max-w-6xl bg-white rounded-lg shadow-lg p-8 mb-8 scroll-mt-24 hidden fade-in">
+                    <h3 class="text-2xl font-semibold text-primary mb-6 flex items-center"><i class="fas fa-bullseye mr-3"></i>Our Mission</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <ul class="text-lg text-gray-700 space-y-4">
+                                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i>Provide inclusive and safe education tailored for marginalized migrant and displaced communities.</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i>Equip learners with digital literacy skills for modern challenges.</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i>Deliver vocational training, including ICT, language, agriculture, and leadership.</li>
+                            </ul>
                         </div>
-                        <div class="text-center">
-                            <i class="fas fa-chalkboard-teacher text-4xl text-primary mb-2"></i>
-                            <p class="font-bold text-2xl">200+</p>
-                            <p>Teachers Trained</p>
+                        <div>
+                            <ul class="text-lg text-gray-700 space-y-4">
+                                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i>Support academic development and pathways for higher education.</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i>Foster community empowerment through advocacy and rights awareness.</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i>Ensure sustainable, culturally sensitive programs that respect local contexts.</li>
+                            </ul>
                         </div>
-                        <div class="text-center">
-                            <i class="fas fa-laptop-code text-4xl text-primary mb-2"></i>
-                            <p class="font-bold text-2xl">10+</p>
-                            <p>Digital Courses</p>
+                    </div>
+                </div>
+
+                <div id="vision" class="about-content w-full max-w-6xl bg-white rounded-lg shadow-lg p-8 mb-8 scroll-mt-24 hidden fade-in">
+                    <h3 class="text-2xl font-semibold text-primary mb-6 flex items-center"><i class="fas fa-eye mr-3"></i>Our Vision</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <ul class="text-lg text-gray-700 space-y-4">
+                                <li class="flex items-start"><i class="fas fa-star text-primary mt-1 mr-2"></i>Empower communities to achieve self-reliance through education and skill development.</li>
+                                <li class="flex items-start"><i class="fas fa-star text-primary mt-1 mr-2"></i>Create accessible opportunities for all migrants and displaced persons to thrive.</li>
+                                <li class="flex items-start"><i class="fas fa-star text-primary mt-1 mr-2"></i>Build resilient, informed, and digitally capable societies.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="text-lg text-gray-700 space-y-4">
+                                <li class="flex items-start"><i class="fas fa-star text-primary mt-1 mr-2"></i>Promote social justice, inclusion, and advocacy as core pillars of growth.</li>
+                                <li class="flex items-start"><i class="fas fa-star text-primary mt-1 mr-2"></i>Develop a network of strong educational institutions for positive change.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="who-we-are" class="about-content w-full max-w-6xl bg-white rounded-lg shadow-lg p-8 mb-8 scroll-mt-24 hidden fade-in">
+                    <h3 class="text-2xl font-semibold text-primary mb-6 flex items-center"><i class="fas fa-users mr-3"></i>Who We Are</h3>
+                    <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+                        <div>
+                            <p class="text-lg text-gray-700 mb-6">Olive Educational Development Center (OEDC) and Olive Community College (OCC) are passionate about breaking down barriers to education. We empower <span class="font-semibold text-primary">migrant workers, refugees, and displaced youth</span> in Mae Sot and border areas with digital skills, vocational training, and academic support.</p>
+                            <p class="text-lg text-gray-700">Our dedicated team of educators, innovators, and community leaders works tirelessly to create meaningful educational opportunities that transform lives and build stronger communities.</p>
+                        </div>
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Our Team" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <i class="fas fa-users text-4xl text-primary mb-4"></i>
+                            <p class="font-bold text-3xl mb-2">5,000+</p>
+                            <p class="text-lg text-gray-600">Students Reached</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <i class="fas fa-chalkboard-teacher text-4xl text-primary mb-4"></i>
+                            <p class="font-bold text-3xl mb-2">200+</p>
+                            <p class="text-lg text-gray-600">Teachers Trained</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <i class="fas fa-laptop-code text-4xl text-primary mb-4"></i>
+                            <p class="font-bold text-3xl mb-2">10+</p>
+                            <p class="text-lg text-gray-600">Digital Courses</p>
                         </div>
                     </div>
                 </div>
@@ -91,23 +174,92 @@
     <!-- Programs Section -->
     <section id="programs" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="section-title">What We Do</h2>
-            <p class="section-subtitle">Our programs are designed to meet the unique needs of our community, providing practical skills and knowledge for self-reliance and growth.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <i class="fas fa-laptop-code text-4xl text-primary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Digital Literacy</h3>
-                    <p>Training for youth and teachers in essential computer skills, online safety, and modern teaching methodologies.</p>
+            <h2 class="section-title">Our Programs</h2>
+            <p class="section-subtitle">Transforming lives through education and empowerment on both sides of the Thai-Myanmar border</p>
+            
+            <!-- OEDC Section -->
+            <div class="mb-16">
+                <div class="relative program-dropdown mb-8">
+                    <button class="w-full bg-white rounded-lg shadow-lg p-6 flex items-center justify-between" data-target="oedc-content">
+                        <div class="flex items-center">
+                            <img src="OEDC.jpg" alt="OEDC Logo" class="w-16 h-16 object-contain rounded-full border-2 border-blue-600 mr-6">
+                            <div class="text-left">
+                                <h3 class="text-2xl font-bold text-primary">Olive Educational Development Center (OEDC)</h3>
+                                <p class="text-gray-600">Mae Sot, Thailand</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div id="oedc-content" class="hidden mt-4">
+                        <div class="bg-gray-50 rounded-lg shadow-lg p-8 mb-8">
+                            <h4 class="text-xl font-semibold text-primary mb-4">Overview</h4>
+                            <p class="text-gray-700 mb-6">OEDC serves the migrant and displaced communities in Mae Sot, Thailand, providing essential education and skills training. Our center focuses on creating a safe, inclusive learning environment that bridges educational gaps and promotes digital literacy.</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                                <div>
+                                    <h5 class="font-semibold text-primary mb-3">Key Activities</h5>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li class="flex items-start"><i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>Digital skills training for youth and teachers</li>
+                                        <li class="flex items-start"><i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>Teacher professional development programs</li>
+                                        <li class="flex items-start"><i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>Language courses (Thai, English, Burmese)</li>
+                                        <li class="flex items-start"><i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>Community education initiatives</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-primary mb-3">Impact</h5>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li class="flex items-start"><i class="fas fa-star text-blue-600 mt-1 mr-2"></i>3,000+ students trained in digital literacy</li>
+                                        <li class="flex items-start"><i class="fas fa-star text-blue-600 mt-1 mr-2"></i>150+ teachers certified in modern teaching methods</li>
+                                        <li class="flex items-start"><i class="fas fa-star text-blue-600 mt-1 mr-2"></i>500+ language program graduates</li>
+                                        <li class="flex items-start"><i class="fas fa-star text-blue-600 mt-1 mr-2"></i>20+ community partnerships established</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <i class="fas fa-tools text-4xl text-primary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Vocational Training</h3>
-                    <p>Courses in ICT, language, and community leadership to prepare students for meaningful employment.</p>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <i class="fas fa-book-open text-4xl text-primary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Academic Development</h3>
-                    <p>GED preparation and curriculum design tailored for migrant and refugee students seeking higher education.</p>
+            </div>
+
+            <!-- OCC Section -->
+            <div>
+                <div class="relative program-dropdown">
+                    <button class="w-full bg-white rounded-lg shadow-lg p-6 flex items-center justify-between" data-target="occ-content">
+                        <div class="flex items-center">
+                            <img src="OEDC.jpg" alt="OCC Logo" class="w-16 h-16 object-contain rounded-full border-2 border-green-600 mr-6">
+                            <div class="text-left">
+                                <h3 class="text-2xl font-bold text-primary">Olive Community College (OCC)</h3>
+                                <p class="text-gray-600">Myanmar Border Region</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div id="occ-content" class="hidden mt-4">
+                        <div class="bg-gray-50 rounded-lg shadow-lg p-8">
+                            <h4 class="text-xl font-semibold text-primary mb-4">Overview</h4>
+                            <p class="text-gray-700 mb-6">OCC operates within Myanmar's border regions, delivering comprehensive education and vocational training programs. We focus on building sustainable skills and fostering community leadership through practical, hands-on learning experiences.</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                                <div>
+                                    <h5 class="font-semibold text-primary mb-3">Key Activities</h5>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li class="flex items-start"><i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>Vocational training programs</li>
+                                        <li class="flex items-start"><i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>Youth leadership development</li>
+                                        <li class="flex items-start"><i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>Community advocacy training</li>
+                                        <li class="flex items-start"><i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>Media and communications workshops</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-primary mb-3">Impact</h5>
+                                    <ul class="space-y-2 text-gray-700">
+                                        <li class="flex items-start"><i class="fas fa-star text-green-600 mt-1 mr-2"></i>2,000+ vocational program graduates</li>
+                                        <li class="flex items-start"><i class="fas fa-star text-green-600 mt-1 mr-2"></i>100+ community leaders trained</li>
+                                        <li class="flex items-start"><i class="fas fa-star text-green-600 mt-1 mr-2"></i>50+ successful community projects</li>
+                                        <li class="flex items-start"><i class="fas fa-star text-green-600 mt-1 mr-2"></i>15+ media initiatives launched</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,17 +271,17 @@
             <h2 class="section-title">Our Community in Action</h2>
             <p class="section-subtitle">A glimpse into the vibrant learning environment we foster every day.</p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="h-64 overflow-hidden rounded-lg shadow-md">
-                    <img src="https://source.unsplash.com/400x400/?classroom,students" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300">
+                <div class="overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" class="w-full gallery-img object-cover" alt="Classroom action">
                 </div>
-                <div class="h-64 overflow-hidden rounded-lg shadow-md">
-                    <img src="https://source.unsplash.com/400x400/?learning,computer" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300">
+                <div class="overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" class="w-full gallery-img object-cover" alt="Digital learning">
                 </div>
-                <div class="h-64 overflow-hidden rounded-lg shadow-md">
-                    <img src="https://source.unsplash.com/400x400/?teacher,smile" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300">
+                <div class="overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" class="w-full gallery-img object-cover" alt="Teacher smiling">
                 </div>
-                <div class="h-64 overflow-hidden rounded-lg shadow-md">
-                    <img src="https://source.unsplash.com/400x400/?children,education" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300">
+                <div class="overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="w-full gallery-img object-cover" alt="Children learning">
                 </div>
             </div>
         </div>
@@ -137,10 +289,146 @@
 
     <!-- Call to Action / Donate Section -->
     <section id="donate" class="py-20 bg-primary text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-4">Join Us in Making a Difference</h2>
-            <p class="text-lg mb-8 max-w-2xl mx-auto">Your contribution can provide a student with a month of digital literacy classes, a teacher with professional development, or a community with access to life-changing skills.</p>
-            <a href="#contact" class="bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300">Donate Now</a>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="ngo-badge" aria-label="Support our mission">Support Our Mission</span>
+                <h2 class="text-4xl font-bold mb-4">Join Us in Making a Difference</h2>
+                <p class="text-lg mb-8 max-w-2xl mx-auto">Your contribution can provide a student with a month of digital literacy classes, a teacher with professional development, or a community with access to life-changing skills.</p>
+            </div>
+
+            <!-- Impact Cards -->
+            <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-2xl font-bold mb-2">฿500</div>
+                    <h3 class="font-semibold mb-4">Digital Access</h3>
+                    <p class="text-gray-600 text-sm">Provides one month of computer and internet access for a student</p>
+                </div>
+                <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-2xl font-bold mb-2">฿1,000</div>
+                    <h3 class="font-semibold mb-4">Education Package</h3>
+                    <p class="text-gray-600 text-sm">Supplies learning materials and resources for one student</p>
+                </div>
+                <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-primary text-2xl font-bold mb-2">฿2,500</div>
+                    <h3 class="font-semibold mb-4">Teacher Training</h3>
+                    <p class="text-gray-600 text-sm">Supports professional development for one teacher</p>
+                </div>
+            </div>
+
+            <!-- Donation Action Button -->
+            <div class="text-center">
+                <button id="showDonationDetails" class="bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+                    Make a Donation
+                </button>
+            </div>
+
+            <!-- QR Code Enlargement Modal -->
+            <div id="qrModal" class="fixed inset-0 bg-black bg-opacity-75 z-[60] hidden flex items-center justify-center">
+                <div class="relative">
+                    <img src="qr-code.png" alt="Enlarged QR Code" class="max-w-full max-h-[80vh] object-contain">
+                    <button id="closeQrModal" class="absolute -top-4 -right-4 bg-white rounded-full w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-800 shadow-lg">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hidden Donation Details Modal -->
+            <div id="donationModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+                <div class="container mx-auto px-4 h-full flex items-center justify-center">
+                    <div class="bg-white text-gray-800 rounded-lg shadow-xl max-w-4xl w-full max-h-90vh overflow-y-auto">
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="text-2xl font-bold text-primary">Donation Methods</h3>
+                                <button id="closeDonationModal" class="text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-times text-xl"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <!-- Bank Transfer Details -->
+                                <div class="space-y-6">
+                                    <h4 class="font-semibold text-primary text-xl mb-4">Thai Bank Transfer</h4>
+                                    <div class="bg-gray-50 p-6 rounded-lg">
+                                        <!-- QR Code Section -->
+                                        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+                                            <div class="relative cursor-pointer qr-container">
+                                                <img src="QR code.png" alt="Donation QR Code" class="w-40 h-40 object-contain rounded-lg shadow-md" id="donationQR">
+                                                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 rounded-lg opacity-0 hover:opacity-100 transition-opacity">
+                                                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                                                </div>
+                                            </div>
+                                            <div class="text-center md:text-left">
+                                                <h5 class="font-semibold text-primary mb-4">Quick Payment</h5>
+                                                <ol class="space-y-2 text-sm text-gray-600">
+                                                    <li>1. Open your banking app</li>
+                                                    <li>2. Scan this QR code</li>
+                                                    <li>3. Enter your desired amount</li>
+                                                    <li>4. Add your name in the reference</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+
+                                        <!-- Bank Account Details -->
+                                        <div class="border-t border-gray-200 pt-6 mt-6">
+                                            <h5 class="font-semibold text-primary mb-4">Bank Account Details</h5>
+                                            <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+                                                <div class="space-y-2">
+                                                    <p><span class="font-medium">Bank:</span> Kasikorn Bank</p>
+                                                    <p><span class="font-medium">Account Name:</span> Olive Education Development Center</p>
+                                                </div>
+                                                <div class="space-y-2">
+                                                    <p><span class="font-medium">Account Number:</span> XXX-X-XXXXX-X</p>
+                                                    <p><span class="font-medium">Branch:</span> Mae Sot</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Instructions -->
+                                        <div class="text-sm text-gray-600 border-t pt-4 mt-4">
+                                            <p class="font-medium mb-2">After your donation:</p>
+                                            <p>• Please email your transfer slip to info@occ.education</p>
+                                            <p>• We'll send you a donation receipt</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Other Ways to Support -->
+                                <div>
+                                    <h4 class="font-semibold text-primary text-xl mb-4">Other Ways to Help</h4>
+                                    <ul class="space-y-4">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-hand-holding-heart text-primary mt-1 mr-3"></i>
+                                            <div>
+                                                <h5 class="font-semibold">Monthly Giving</h5>
+                                                <p class="text-gray-600 text-sm">Set up recurring donations to sustain our programs</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-users text-primary mt-1 mr-3"></i>
+                                            <div>
+                                                <h5 class="font-semibold">Corporate Partnership</h5>
+                                                <p class="text-gray-600 text-sm">Create lasting impact through partnership</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-hands-helping text-primary mt-1 mr-3"></i>
+                                            <div>
+                                                <h5 class="font-semibold">Volunteer</h5>
+                                                <p class="text-gray-600 text-sm">Share your skills and time</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 text-center">
+                                <a href="#contact" class="btn-primary font-bold py-3 px-8 rounded-full">Contact for Support</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
 
@@ -150,38 +438,39 @@
             <h2 class="section-title">Get in Touch</h2>
             <p class="section-subtitle">We'd love to hear from you. Whether you want to donate, volunteer, or just learn more, please reach out.</p>
             <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
-                <form action="https://formspree.io/f/your_form_id" method="POST">
+                <form action="https://formspree.io/f/xgvzyzdg" method="POST">
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
-                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required aria-required="true">
                     </div>
                     <div class="mb-4">
                         <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required aria-required="true">
                     </div>
                     <div class="mb-4">
                         <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
-                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required aria-required="true"></textarea>
                     </div>
-                    <button type="submit" class="w-full btn-primary font-bold py-3 px-6 rounded-lg">Send Message</button>
+                    <button type="submit" class="w-full btn-primary font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-cta-color">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-10">
+    <footer class="py-10">
         <div class="container mx-auto px-6 text-center">
-            <a href="#" class="text-2xl font-bold text-white mb-4 inline-block">
+            <a href="#" class="text-2xl font-bold text-white mb-4 inline-block flex items-center gap-2">
+                <span class="ngo-badge" aria-label="NGO">NGO</span>
                 <i class="fas fa-leaf mr-2"></i>Olive Education
             </a>
             <ul class="flex justify-center space-x-6 mb-6">
-                <li><a href="#" class="hover:text-secondary-color"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" class="hover:text-secondary-color"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#" class="hover:text-secondary-color"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#" class="hover:text-highlight-color" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#" class="hover:text-highlight-color" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" class="hover:text-highlight-color" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
             </ul>
-            <p class="text-gray-400">&copy; 2025 Olive Education. All Rights Reserved.</p>
-            <p class="text-gray-500 text-sm mt-2">📍 Mae Sot, Tak Province, Thailand | 📧 info@occ.education</p>
+            <p class="text-gray-100">&copy; 2025 Olive Education. All Rights Reserved.</p>
+            <p class="text-gray-200 text-sm mt-2">📍 Mae Sot, Tak Province, Thailand | 📧 info@occ.education</p>
         </div>
     </footer>
 

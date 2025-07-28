@@ -118,113 +118,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Handle navigation links smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+    // Program section dropdowns
+    document.querySelectorAll('.program-dropdown button').forEach(button => {
+        button.addEventListener('click', function(e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                // Close mobile menu if open
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-                
-                // Smooth scroll to target
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Program section dropdowns and navigation
-    const programLinks = document.querySelectorAll('.program-dropdown button, a[href^="#oedc-content"], a[href^="#occ-content"]');
-    programLinks.forEach(element => {
-        element.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Get target content ID
-            const targetId = this.getAttribute('data-target') || this.getAttribute('href').substring(1);
+            const targetId = this.getAttribute('data-target');
             const content = document.getElementById(targetId);
-            const programsSection = document.getElementById('programs');
+            const icon = this.querySelector('.fa-chevron-down');
             
-            if (content && programsSection) {
-                // First scroll to programs section
-                programsSection.scrollIntoView({ behavior: 'smooth' });
+            if (content) {
+                // Toggle the clicked content
+                content.classList.toggle('hidden');
                 
-                // Show the target content and hide others
-                document.querySelectorAll('.program-dropdown [id$="-content"]').forEach(el => {
-                    if (el.id === targetId) {
-                        el.classList.remove('hidden');
-                        // Rotate the corresponding button's icon
-                        const button = document.querySelector(`button[data-target="${targetId}"]`);
-                        if (button) {
-                            const icon = button.querySelector('.fa-chevron-down');
-                            if (icon) {
-                                icon.style.transform = 'rotate(180deg)';
-                            }
-                        }
-                    } else {
-                        el.classList.add('hidden');
-                        // Reset other icons
-                        const otherButton = document.querySelector(`button[data-target="${el.id}"]`);
-                        if (otherButton) {
-                            const icon = otherButton.querySelector('.fa-chevron-down');
-                            if (icon) {
-                                icon.style.transform = '';
-                            }
-                        }
-                    }
-                });
-                
-                // Close mobile menu if open
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-                
-                // Close any open dropdowns in header
-                const dropdowns = document.querySelectorAll('.dropdown-menu');
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.add('hidden');
-                });
-                const toggles = document.querySelectorAll('.dropdown-toggle');
-                toggles.forEach(toggle => {
-                    toggle.setAttribute('aria-expanded', 'false');
-                    const icon = toggle.querySelector('.fa-chevron-down');
-                    if (icon) icon.style.transform = '';
-                });
-            }
-        });
-    });
-
-    // Handle About tab clicks
-    document.querySelectorAll('.about-tab').forEach(tab => {
-        tab.addEventListener('click', function(e) {
-            e.preventDefault();
-            const tabId = this.getAttribute('data-tab');
-            
-            // Hide all about content sections
-            document.querySelectorAll('.about-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-            
-            // Show selected content
-            const selectedContent = document.getElementById(tabId);
-            if (selectedContent) {
-                selectedContent.classList.remove('hidden');
-            }
-            
-            // Close dropdown after selection
-            const dropdown = this.closest('.dropdown-menu');
-            if (dropdown) {
-                dropdown.classList.add('hidden');
-                const toggle = dropdown.previousElementSibling;
-                if (toggle) {
-                    toggle.setAttribute('aria-expanded', 'false');
-                    const icon = toggle.querySelector('.fa-chevron-down');
-                    if (icon) icon.style.transform = '';
+                // Update icon rotation
+                if (icon) {
+                    icon.style.transform = content.classList.contains('hidden') ? '' : 'rotate(180deg)';
                 }
             }
         });
