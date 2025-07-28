@@ -6,6 +6,8 @@
     --bg-color: #FEFFFF;
     --highlight-color: #FECEAB;
     --cta-color: #FF6F61;
+}
+
 body {
     font-family: 'Nunito', 'Poppins', 'Segoe UI', Arial, sans-serif;
     color: var(--text-color);
