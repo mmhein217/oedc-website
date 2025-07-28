@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').slice(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Close mobile menu if open
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+    });
     // Mobile menu functionality
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -8,6 +28,33 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenu.classList.toggle('hidden');
         });
     }
+
+    // About tabs functionality
+    const aboutTabs = document.querySelectorAll('.about-tab');
+    const aboutContents = document.querySelectorAll('.about-content');
+
+    aboutTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-tab');
+            
+            // Hide all content sections
+            aboutContents.forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('active');
+            });
+            
+            // Show target content
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+                targetContent.classList.add('active');
+            }
+            
+            // Update active state of tabs
+            aboutTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
 
     // Dropdown functionality for all dropdowns
     document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
@@ -54,6 +101,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (icon) icon.style.transform = '';
             });
         }
+    });
+
+    // Programs section dropdown functionality
+    const programButtons = document.querySelectorAll('.program-dropdown button[data-target]');
+    
+    programButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const content = document.getElementById(targetId);
+            const icon = this.querySelector('.fa-chevron-down');
+            
+            // Close other program contents
+            document.querySelectorAll('.program-dropdown [id$="-content"]').forEach(el => {
+                if (el.id !== targetId) {
+                    el.classList.add('hidden');
+                    const otherButton = document.querySelector(`button[data-target="${el.id}"]`);
+                    if (otherButton) {
+                        const otherIcon = otherButton.querySelector('.fa-chevron-down');
+                        if (otherIcon) otherIcon.style.transform = '';
+                    }
+                }
+            });
+            
+            // Toggle current content
+            if (content) {
+                content.classList.toggle('hidden');
+                if (icon) {
+                    icon.style.transform = content.classList.contains('hidden') ? '' : 'rotate(180deg)';
+                }
+            }
+        });
     });
 
     // Modal Management Functions
