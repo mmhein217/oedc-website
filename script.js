@@ -32,23 +32,57 @@ document.addEventListener('DOMContentLoaded', function() {
     // About tabs functionality
     const aboutTabs = document.querySelectorAll('.about-tab');
     const aboutContents = document.querySelectorAll('.about-content');
+    
+    // Show first tab content by default
+    if (aboutContents.length > 0) {
+        aboutContents[0].classList.remove('hidden');
+        aboutContents[0].classList.add('active');
+    }
 
     aboutTabs.forEach(tab => {
         tab.addEventListener('click', function() {
             const targetId = this.getAttribute('data-tab');
             
-            // Hide all content sections
-            aboutContents.forEach(content => {
-                content.classList.add('hidden');
-                content.classList.remove('active');
-            });
-            
-            // Show target content
-            const targetContent = document.getElementById(targetId);
-            if (targetContent) {
-                targetContent.classList.remove('hidden');
-                targetContent.classList.add('active');
+            // Close dropdown menu after selection on mobile
+            const dropdownMenu = this.closest('.dropdown-menu');
+            if (dropdownMenu) {
+                dropdownMenu.classList.add('hidden');
+                const toggle = dropdownMenu.previousElementSibling;
+                if (toggle) {
+                    toggle.setAttribute('aria-expanded', 'false');
+                    const icon = toggle.querySelector('.fa-chevron-down');
+                    if (icon) icon.style.transform = '';
+                }
             }
+            
+            // Hide all content sections with fade out
+            aboutContents.forEach(content => {
+                if (content.classList.contains('active')) {
+                    content.style.opacity = '0';
+                    setTimeout(() => {
+                        content.classList.add('hidden');
+                        content.classList.remove('active');
+                        
+                        // Show target content with fade in
+                        const targetContent = document.getElementById(targetId);
+                        if (targetContent) {
+                            targetContent.classList.remove('hidden');
+                            setTimeout(() => {
+                                targetContent.classList.add('active');
+                                targetContent.style.opacity = '1';
+                                
+                                // Smooth scroll to content on mobile
+                                if (window.innerWidth < 768) {
+                                    targetContent.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                    });
+                                }
+                            }, 50);
+                        }
+                    }, 300);
+                }
+            });
             
             // Update active state of tabs
             aboutTabs.forEach(t => t.classList.remove('active'));
@@ -111,8 +145,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetId = this.getAttribute('data-target');
             const content = document.getElementById(targetId);
             const icon = this.querySelector('.fa-chevron-down');
+            const isExpanding = content.classList.contains('hidden');
             
-            // Close other program contents
+            // Close other program contents first
             document.querySelectorAll('.program-dropdown [id$="-content"]').forEach(el => {
                 if (el.id !== targetId) {
                     el.classList.add('hidden');
@@ -124,11 +159,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Toggle current content
+            // Toggle current content with smooth animation
             if (content) {
-                content.classList.toggle('hidden');
+                if (isExpanding) {
+                    content.classList.remove('hidden');
+                    content.style.maxHeight = '0';
+                    content.style.opacity = '0';
+                    setTimeout(() => {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.opacity = '1';
+                    }, 10);
+                } else {
+                    content.style.maxHeight = '0';
+                    content.style.opacity = '0';
+                    setTimeout(() => {
+                        content.classList.add('hidden');
+                    }, 300);
+                }
+
                 if (icon) {
-                    icon.style.transform = content.classList.contains('hidden') ? '' : 'rotate(180deg)';
+                    icon.style.transform = isExpanding ? 'rotate(180deg)' : '';
                 }
             }
         });
