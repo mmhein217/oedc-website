@@ -235,21 +235,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const qrImage = document.getElementById('qrImage');
     const qrModal = document.getElementById('qrModal');
     const modalImage = document.getElementById('modalImage');
+    const modalCloseBtn = document.querySelector('#qrModal .modal-close');
 
-    if (qrImage && qrModal && modalImage) {
-        // Open modal when clicking QR image
+
+    if (qrImage && qrModal && modalImage && modalCloseBtn) {
+        // Open modal and set image
         qrImage.addEventListener('click', () => {
             modalImage.src = qrImage.src;
             modalImage.alt = qrImage.alt;
-            openModal(qrModal);
+            qrModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         });
 
-        // Close modal when clicking outside the image
+        // Close modal on close button
+        modalCloseBtn.addEventListener('click', () => {
+            qrModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // Close modal when clicking outside the image area
         qrModal.addEventListener('click', (e) => {
-            if (e.target === qrModal || e.target.classList.contains('modal-close')) {
-                closeModal(qrModal);
+            // Only close if clicking the backdrop, not the image or modal content
+            if (e.target === qrModal) {
+                qrModal.classList.add('hidden');
+                document.body.style.overflow = '';
             }
         });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (!qrModal.classList.contains('hidden') && e.key === 'Escape') {
+                qrModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+
     }
 
     // Update the global escape key handler
