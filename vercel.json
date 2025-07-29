@@ -2,26 +2,24 @@
   "version": 2,
   "builds": [
     {
-      "src": "**",
+      "src": "**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/assets/images/(.*)",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
-      "dest": "/assets/images/$1"
+      "handle": "filesystem"
     },
     {
-      "src": "/(.*)",
-      "dest": "/$1",
-      "continue": true
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
     }
   ],
   "images": {
     "sizes": [640, 750, 828, 1080, 1200],
     "domains": ["vercel.app"],
     "formats": ["image/webp"],
-    "minimumCacheTTL": 60
+    "minimumCacheTTL": 60,
+    "contentSecurityPolicy": "default-src 'self'; img-src 'self' data: https:;"
   }
 }
