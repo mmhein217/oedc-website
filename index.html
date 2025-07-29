@@ -323,12 +323,10 @@
             </div>
 
             <!-- QR Code Enlargement Modal -->
-            <div id="qrModal" class="fixed inset-0 bg-black bg-opacity-75 z-[60] hidden flex items-center justify-center">
-                <div class="relative">
-                    <img src="qr-code.png" alt="Enlarged QR Code" class="max-w-full max-h-[80vh] object-contain">
-                    <button id="closeQrModal" class="absolute -top-4 -right-4 bg-white rounded-full w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-800 shadow-lg">
-                        <i class="fas fa-times"></i>
-                    </button>
+            <div id="qrModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 flex items-center justify-center">
+                <div class="relative max-w-4xl w-full mx-4">
+                    <img id="modalImage" src="" alt="Enlarged QR Code" class="w-full h-auto">
+                    <button class="modal-close absolute top-4 right-4 text-white text-xl">&times;</button>
                 </div>
             </div>
 
@@ -476,76 +474,7 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        function openQRModal() {
-            document.getElementById('qrModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeQRModal() {
-            document.getElementById('qrModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking outside
-        document.getElementById('qrModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeQRModal();
-            }
-        });
-
-        // Image modal functionality
-        const qrCodeContainer = document.getElementById('qrCodeContainer');
-        const imageModal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-
-        qrCodeContainer.addEventListener('click', function() {
-            const qrImageSrc = document.getElementById('qrImage').src;
-            modalImage.src = qrImageSrc;
-            imageModal.classList.remove('hidden');
-        });
-
-        function closeModal() {
-            imageModal.classList.add('hidden');
-        }
-
-        // Close image modal when clicking outside the image
-        imageModal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-const modal = document.getElementById('imageModal');
-const qrContainer = document.getElementById('qrCodeContainer');
-const modalImage = document.getElementById('modalImage');
-const qrImage = document.getElementById('qrImage');
-
-qrContainer.addEventListener('click', () => {
-    modalImage.src = qrImage.src;
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-});
-
-function closeModal() {
-    modal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-}
-
-// Close modal when clicking outside the image
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        closeModal();
-    }
-});
-
-// Close modal with ESC key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
-});
-    </script>
+   
 
 </body>
 </html>

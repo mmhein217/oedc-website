@@ -232,19 +232,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // QR Code Modal Functionality
-    const qrImage = document.getElementById('donationQR');
+    const qrImage = document.getElementById('qrImage');
     const qrModal = document.getElementById('qrModal');
-    const closeQrModal = document.getElementById('closeQrModal');
+    const modalImage = document.getElementById('modalImage');
 
-    if (qrImage && qrModal && closeQrModal) {
-        qrImage.addEventListener('click', () => openModal(qrModal));
-        closeQrModal.addEventListener('click', () => closeModal(qrModal));
+    if (qrImage && qrModal && modalImage) {
+        // Open modal when clicking QR image
+        qrImage.addEventListener('click', () => {
+            modalImage.src = qrImage.src;
+            modalImage.alt = qrImage.alt;
+            openModal(qrModal);
+        });
+
+        // Close modal when clicking outside the image
         qrModal.addEventListener('click', (e) => {
-            if (e.target === qrModal) {
+            if (e.target === qrModal || e.target.classList.contains('modal-close')) {
                 closeModal(qrModal);
             }
         });
     }
+
+    // Update the global escape key handler
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (donationModal) closeModal(donationModal);
+            if (qrModal) closeModal(qrModal);
+        }
+    });
 
     // Handle navigation links smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
