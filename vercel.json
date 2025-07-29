@@ -8,11 +8,20 @@
   ],
   "routes": [
     {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ]
+  ],
+  "images": {
+    "sizes": [640, 750, 828, 1080, 1200],
+    "domains": ["vercel.app"],
+    "formats": ["image/webp"]
+  }
 }
