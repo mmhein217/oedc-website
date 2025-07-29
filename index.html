@@ -354,8 +354,8 @@
                                             <div class="text-center md:text-left">
                                                 <h5 class="font-semibold text-primary mb-4">Quick Payment</h5>
                                                 <!-- Add click functionality and modal for QR code -->
-                                                <div class="relative cursor-pointer" onclick="openQRModal()">
-                                                    <img src="assets/qr-code.png" alt="QR Code" class="w-48 h-48 object-contain hover:opacity-80 transition-opacity">
+                                                <div class="relative cursor-pointer" id="qrCodeContainer">
+                                                    <img src="/assets/qr-code.png" alt="QR Code" class="w-48 h-48 object-contain hover:opacity-80 transition-opacity" id="qrImage">
                                                     <span class="text-xs text-gray-500 block mt-1">Click to enlarge</span>
                                                 </div>
                                                 <ol class="space-y-2 text-sm text-gray-600">
@@ -493,6 +493,58 @@
                 closeQRModal();
             }
         });
+
+        // Image modal functionality
+        const qrCodeContainer = document.getElementById('qrCodeContainer');
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+
+        qrCodeContainer.addEventListener('click', function() {
+            const qrImageSrc = document.getElementById('qrImage').src;
+            modalImage.src = qrImageSrc;
+            imageModal.classList.remove('hidden');
+        });
+
+        function closeModal() {
+            imageModal.classList.add('hidden');
+        }
+
+        // Close image modal when clicking outside the image
+        imageModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+const modal = document.getElementById('imageModal');
+const qrContainer = document.getElementById('qrCodeContainer');
+const modalImage = document.getElementById('modalImage');
+const qrImage = document.getElementById('qrImage');
+
+qrContainer.addEventListener('click', () => {
+    modalImage.src = qrImage.src;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+});
+
+function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside the image
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// Close modal with ESC key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
     </script>
 
 </body>
